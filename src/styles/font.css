@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Markazi Text';
+    src: local('Markazi Text'),
+        url('../fonts/MarkaziText-Regular.ttf'),
+        url('../fonts/MarkaziText-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: local('Karla'),
+        url('../fonts/Karla-VariableFont_wght.ttf');
+}

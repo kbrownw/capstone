@@ -1,38 +1,207 @@
-.App {
+@import "./styles/resets.css";
+@import "./styles/font.css";
+
+body {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2 {
+  font-family: "Markazi Text";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h3, h4, h5 {
+  font-family: "Karla";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+h1 {
+  font-size: 64px;
+  color: #F4CE14;
+  font-weight: medium;
+}
+
+h2 {
+  font-size: 40px;
+  color: #FFF;
+  font-weight: normal;
+}
+
+p {
+  font-family: "Karla";
+}
+
+/* Navbar */
+
+nav {
+  display: inline-flex;
+  margin: 25px auto;
+  max-width: 875px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav > a {
+  margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav img {
+  height: 55px;
+}
+
+nav ul {
+  display: inline-flex;
+  font-family: "Karla";
+  font-size: 18px;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+nav ul a {
+  text-decoration: none;
+}
+
+nav ul li {
+  color: #000000;
+  padding: 15px;
+}
+
+
+/* Default Button */
+
+.btn-default {
+  font: 'Karla';
+  font-weight: bolder;
+  font-size: 20px;
+  border-radius: 16px;
+  border: none;
+  color:#000000;
+  background-color: #F4CE14;
+  padding: 15px 20px;
+  margin: 25px 0;
+  transition: 300ms ease-in-out;
+}
+
+.btn-default:hover {
+  cursor: pointer;
+  background-color: #495E57;
+  color: #FFF;
+  transition: 300ms ease-in-out;
+}
+
+/* Header */
+
+.wrapper {
+  background-color: #495E57;
+  padding: 50px 0;
+}
+
+header {
+  position: relative;
+  margin: 0 auto;
+  max-width: 875px;
+  width: 100%;
+  display: inline-flex;
+}
+
+#headerText {
+  max-width: 300px;
+  text-align: left;
+}
+
+header p {
+  padding-top: 25px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+header .btn-default {
+  margin-bottom: 50px;
+}
+
+header .btn-default:hover {
+  background-color: #EE9972;
+  transition: 300ms ease-in-out;
+}
+
+header img {
+  max-height: 460px;
+  width: 390px;
+  object-fit: cover;
+  border-radius: 16px;
+  position: absolute;
+  overflow-y: visible;
+  right: 0;
+}
+
+/* Specials Section */
+
+#specials {
+  position: relative;
+  max-width: 875px;
+  margin: 150px auto 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "heading heading specials-btn"
+                       "cards  cards  cards";
+  gap: 1em;
+}
+
+#specials h1 {
+  color: #000000;
+  grid-area: heading;
+  text-align: left;
+}
+
+#specials .btn-default {
+  margin: 0 auto;
+  padding: 15px 75px;
+  grid-area: specials-btn;
+  align-self: self-end;
+  width: 100%;
+}
+
+#specials-cards {
+  grid-area: cards;
+  margin-top: 3em;
+}
+
+#specials section {
+  max-width: 270px;
+  background-color: #EEE;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+#specials section h4 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#specials p {
+  font-size: 16px;
+  color: #495E57;
+}
+
+/* Specials cards */
+
+.food-card {
+  display: grid;
+  max-width: 270px;
+  flex-flow: column;
+}
+
+#specials img {
+  max-width: 270px;
+}
+
+.inline-wrapper {
+  padding: 1.5em 1em;
+  display: inline-flex;
+  width: 100%;
+}
+
+.right-align {
+  margin-left: auto;
 }
