@@ -25,8 +25,15 @@ h2 {
   font-weight: normal;
 }
 
+h4 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 p {
   font-family: "Karla";
+  font-size: 16px;
+  color: #495E57;
 }
 
 /* Navbar */
@@ -135,7 +142,6 @@ header img {
 /* Specials Section */
 
 #specials {
-  position: relative;
   max-width: 875px;
   margin: 150px auto 0 auto;
   width: 100%;
@@ -172,13 +178,6 @@ header img {
   overflow: hidden;
 }
 
-
-
-#specials section h4 {
-  font-weight: bold;
-  font-size: 18px;
-}
-
 #specials p {
   font-size: 16px;
   color: #495E57;
@@ -186,22 +185,214 @@ header img {
 
 /* Specials cards */
 
+.grid-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
 .food-card {
   display: grid;
   max-width: 270px;
-  flex-flow: column;
+  height: 505px;
+  grid-template-areas: "img img"
+                       "fc-title fc-price"
+                       "description description"
+                       "fc-footer fc-arrow";
+  justify-items: left;
+  text-align: left;
+  margin-bottom: 2em;
 }
 
-#specials img {
-  max-width: 270px;
+.food-card img {
+  height: 204px;
+  width: 270px;
+  object-fit: cover;
+  grid-area: img;
+  padding-bottom: 1em;
 }
 
-.inline-wrapper {
-  padding: 1.5em 1em;
-  display: inline-flex;
+.foodcard-title {
+  grid-area: fc-title;
+  padding: 20px;
+}
+
+.foodcard-price {
+  grid-area: fc-price;
+  padding: 20px;
+}
+
+.food-card p {
+  grid-area: description;
+  padding: 20px;
+  height: 130px;
+}
+
+.foodcard-order {
+  grid-area: fc-footer;
+  padding: 20px;
+}
+
+.food-card a {
+  grid-area: fc-arrow;
+  padding: 20px;
+}
+
+.grid-justify-right {
+  justify-self: right;
+}
+
+/* Testimonials */
+
+#testimonials h1 {
+  margin-bottom: 100px;
+}
+
+#testimonials .grid-wrapper {
+  max-width: 875px;
   width: 100%;
+  margin-bottom: 100px;
 }
 
-.right-align {
-  margin-left: auto;
+.review-card {
+  background-color: #EEE;
+  width: 204px;
+  height: 194px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  grid-template-areas: "ratingText ratingStars"
+                       "reviewerImg reviewerName"
+                       "quote      quote";
+  text-align: left;
+  justify-items: center;
+  align-items: center;
+}
+
+.rating-stars {
+  grid-area: ratingStars;
+  justify-self: left;
+}
+
+.rating-stars svg {
+  width: 16px;
+  height: 16px;
+  padding: 0 1px;
+}
+
+.review-card img {
+  width: 66px;
+  height: 52px;
+  object-fit: cover;
+  grid-area: reviewerImg;
+}
+
+.reviewer-name {
+  grid-area: reviewerName;
+}
+
+.review-card p {
+  grid-area: quote;
+  width: 90%;
+  height: 50px;
+}
+
+/* About section */
+
+#about {
+  display: inline-flex;
+  max-width: 875px;
+  max-height: 450px;
+  height: 100%;
+  width: 100%;
+  margin: 100px 0;
+}
+
+#about-text {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: left;
+  padding: 25px 0;
+}
+
+#about h1 {
+  color: #495E57;
+}
+
+#about h2, #about p {
+  color:#000000;
+}
+
+#about p {
+  font-size: 24px;
+  font-weight: 400;
+  padding-top: 50px;
+}
+
+#about-images {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+#about img {
+  position:absolute;
+  display: flex;
+  Width: 283px;
+  Height: 309px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+#about-first-img {
+  z-index: 1;
+  right: 0;
+}
+
+#about-second-img {
+  bottom: 0;
+}
+
+/* Footer */
+
+footer {
+  color:#FFF;
+}
+
+footer .grid-wrapper {
+  max-width: 875px;
+  width: 100%;
+  text-align: left;
+  padding: 2em 0;
+}
+
+footer img {
+  background-color: #FFF;
+  max-width: 110px;
+  padding: 21px;
+}
+
+footer h4 {
+  max-height: 50px;
+  height: 100%;
+}
+
+footer ul {
+  margin-top: 25px;
+  list-style-type: none;
+  font-family: "Karla";
+  font-size: 16px;
+}
+
+footer ul li {
+  padding: 5px 0;
+  color:#FFF;
+}
+
+footer a {
+  text-decoration: none;
+  color:#FFF;
+  font-family: "Karla";
+  font-size: 16px;
 }
