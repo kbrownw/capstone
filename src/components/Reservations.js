@@ -1,6 +1,8 @@
+import ReserveHeader from "./ReserveHeader";
+
 const Reservations = () => {
     return (
-        <h1>Page Under Construction</h1>
+        <ReserveHeader />
     );
 };
 
