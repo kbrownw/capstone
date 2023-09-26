@@ -40,7 +40,7 @@ const ratingsWithStars = Object.values(reviews).map(({ rating, image, name, quot
         );
     }
     return (
-        <ReviewCard key={ image } rating={ stars } reviewerImg={ image } reviewerName={ name } quote={ quote }/>
+        <ReviewCard key={ name } rating={ stars } reviewerImg={ image } reviewerName={ name } quote={ quote }/>
     )
 })
 

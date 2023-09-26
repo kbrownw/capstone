@@ -11,7 +11,9 @@ function Header() {
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                     <Button buttonText="Reserve a Table" />
                 </div>
-                <img src={ restaurantFood } />
+                <div id="header-img">
+                    <img src={ restaurantFood } alt="Restaurant food"/>
+                </div>
             </header>
         </div>
     );

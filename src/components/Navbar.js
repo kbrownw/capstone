@@ -39,10 +39,14 @@ const navMenu = Object.values(navMenuItems).map(({text, url}) => {
 function Navbar() {
     return (
         <nav>
-            <a href="#" role="img">
+            <a href="#top" role="img">
                 <img src={logo} alt="Chef holding a dish of food" />
             </a>
-            <ul>
+            <input id="menu-toggle" type="checkbox" />
+            <label className="menu-button-container" htmlFor="menu-toggle">
+                <div className="menu-button"></div>
+            </label>
+            <ul className="menu">
                 {navMenu}
             </ul>
         </nav>

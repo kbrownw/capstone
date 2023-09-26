@@ -4,7 +4,7 @@ import Specials from "./components/Specials";
 import Testimonials from "./components/Testimonials";
 import About from "./components/About";
 import Footer from "./components/Footer";
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

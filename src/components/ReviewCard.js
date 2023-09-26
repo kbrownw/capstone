@@ -1,7 +1,6 @@
 
 
 const ReviewCard = ({ rating, reviewerImg, reviewerName, quote }) => {
-    console.log(rating)
     return (
         <section className="review-card">
             <h4 className="rating-text">Rating</h4>
