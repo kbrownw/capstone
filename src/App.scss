@@ -582,9 +582,7 @@ label {
   font-family: "Karla";
   font-size: 16px;
   color:#495E57;
-  margin: 1em 0 0.25em 0;
   width: 8em;
-  grid-area: lbl;
 }
 
 .form-wrapper {
@@ -599,14 +597,21 @@ form h2 {
 }
 
 .form-row {
-  display: grid;
-  grid-template-areas: "lbl input"
-                       ".   errors";
+  display: flex;
+  flex-direction: row;
   justify-content: left;
   align-items: center;
 }
 
+.form-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
 input {
+  flex-grow: 1;
   font-family: "Karla";
   font-size: 16px;
   height: 2em;
@@ -622,15 +627,15 @@ input {
   border-width: 3px;
 }
 
-#firstName, #lastName {
-  width: 100%;
-}
-
 .form-error-text {
   color: #dd4040;
   width: 100%;
   margin-left: 2.5em;
   grid-area: errors;
+}
+
+#phoneNumber {
+  width: 30%;
 }
 
 #diner-section {

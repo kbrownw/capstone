@@ -38,59 +38,67 @@ const BookingForm = () => {
             <div className="form-wrapper" id="customer-info">
                 <div className="form-row">
                     <label htmlFor="firstName">First Name:</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        className={ formik.errors.firstName && formik.touched.firstName ? "form-error" : ""}
-                        id="firstName"
-                        onChange={ formik.handleChange }
-                        value={ formik.values.firstName }
-                    />
-                    { formik.errors.firstName && formik.touched.firstName ? (
-                    <div className="form-error-text">{ formik.errors.firstName }</div>
-                ) : <div className="form-error-text">&nbsp;</div> }
+                    <div className="form-column">
+                        <input
+                            type="text"
+                            name="firstName"
+                            className={ formik.errors.firstName && formik.touched.firstName ? "form-error" : ""}
+                            id="firstName"
+                            onChange={ formik.handleChange }
+                            value={ formik.values.firstName }
+                        />
+                        { formik.errors.firstName && formik.touched.firstName ? (
+                        <div className="form-error-text">{ formik.errors.firstName }</div>
+                    ) : <div className="form-error-text">&nbsp;</div> }
+                    </div>
                 </div>
                 <div className="form-row">
                     <label htmlFor="lastName">Last Name:</label>
-                    <input
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        className={ formik.errors.lastName && formik.touched.lastName ? "form-error" : ""}
-                        onChange={ formik.handleChange }
-                        value={ formik.values.lastName }
-                    />
-                    { formik.errors.lastName && formik.touched.lastName ? (
-                        <div className="form-error-text">{ formik.errors.lastName }</div>
-                        ) : <div className="form-error-text">&nbsp;</div> }
+                    <div className="form-column">
+                        <input
+                            type="text"
+                            name="lastName"
+                            id="lastName"
+                            className={ formik.errors.lastName && formik.touched.lastName ? "form-error" : ""}
+                            onChange={ formik.handleChange }
+                            value={ formik.values.lastName }
+                        />
+                        { formik.errors.lastName && formik.touched.lastName ? (
+                            <div className="form-error-text">{ formik.errors.lastName }</div>
+                            ) : <div className="form-error-text">&nbsp;</div> }
+                    </div>
                 </div>
                 <div className="form-row">
                     <label htmlFor="email">Email Address:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        className={ formik.errors.email && formik.touched.email ? "form-error" : ""}
-                        onChange={ formik.handleChange }
-                        value={ formik.values.email }
-                    />
-                    { formik.errors.email && formik.touched.email ? (
-                        <div className="form-error-text">{ formik.errors.email }</div>
-                        ) : <div className="form-error-text">&nbsp;</div> }
+                    <div className="form-column">
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            className={ formik.errors.email && formik.touched.email ? "form-error" : ""}
+                            onChange={ formik.handleChange }
+                            value={ formik.values.email }
+                        />
+                        { formik.errors.email && formik.touched.email ? (
+                            <div className="form-error-text">{ formik.errors.email }</div>
+                            ) : <div className="form-error-text">&nbsp;</div> }
+                    </div>
                 </div>
                 <div className="form-row">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input
-                        type="text"
-                        name="phoneNumber"
-                        id="phoneNumber"
-                        className={ formik.errors.phoneNumber && formik.touched.phoneNumber ? "form-error" : ""}
-                        onChange={ formik.handleChange }
-                        value={ formik.values.phoneNumber }
-                    />
-                    { formik.errors.phoneNumber && formik.touched.phoneNumber ? (
-                         <div className="form-error-text">{ formik.errors.phoneNumber }</div>
-                         ) : <div className="form-error-text">&nbsp;</div> }
+                    <div className="form-column">
+                        <input
+                            type="text"
+                            name="phoneNumber"
+                            id="phoneNumber"
+                            className={ formik.errors.phoneNumber && formik.touched.phoneNumber ? "form-error" : ""}
+                            onChange={ formik.handleChange }
+                            value={ formik.values.phoneNumber }
+                        />
+                        { formik.errors.phoneNumber && formik.touched.phoneNumber ? (
+                            <div className="form-error-text">{ formik.errors.phoneNumber }</div>
+                            ) : <div className="form-error-text">&nbsp;</div> }
+                    </div>
                 </div>
             </div>
             <h2>Dining Information</h2>
