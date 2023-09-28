@@ -3,7 +3,7 @@ import tallLogo from "../images/littleLemonLogo-tall.png";
 const footerDoormat = [
     {
         text: "Home",
-        url: "#top"
+        url: "/"
     },
     {
         text: "About",
@@ -15,7 +15,7 @@ const footerDoormat = [
     },
     {
         text: "Reservations",
-        url: "#top"
+        url: "/book-a-table"
     },
     {
         text: "Order Online",

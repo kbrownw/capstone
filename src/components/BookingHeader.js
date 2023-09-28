@@ -1,6 +1,6 @@
 import littleLemonTable from "../images/littleLemonTable.jpg";
 
-const ReserveHeader = () => {
+const BookingHeader = () => {
     return (
         <div id="reserve-wrapper" className="wrapper">
             <article id="reserve-header">
@@ -16,4 +16,4 @@ const ReserveHeader = () => {
     );
 };
 
-export default ReserveHeader;
+export default BookingHeader;

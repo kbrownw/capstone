@@ -17,7 +17,7 @@ const navMenuItems = [
     },
     {
         text: "RESERVATIONS",
-        url: "/reservations"
+        url: "/book-a-table"
     },
     {
         text: "ORDER ONLINE",
