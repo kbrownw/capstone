@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import restaurant from "../images/restaurant.jpg";
 import { useEffect } from "react";
 
-const BookingForm = ({ bookingTimes, updateTimes }) => {
+const BookingForm = ({ bookingTimes, updateTimes, onSubmit }) => {
     const convoBubbles = <>
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                 <path d="M8.27188 29.4152C12.3544 29.4152 15.6639 25.9727 15.6639 21.7261C15.6639 17.4794 12.3544 14.0369 8.27188 14.0369C4.18939 14.0369 0.879883 17.4794 0.879883 21.7261C0.879883 23.1266 1.23985 24.4396 1.8688 25.5706L1.24948 29.0308L4.57588 28.3866C5.66315 29.0408 6.92548 29.4152 8.27188 29.4152Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
@@ -47,13 +47,20 @@ const BookingForm = ({ bookingTimes, updateTimes }) => {
         }),
     })
 
+    const handleSubmit = (e) => {
+        if (onSubmit) {
+            onSubmit([formik.values.firstName, formik.values.lastName, formik.values.email, formik.values.phoneNumber, formik.values.resDate, formik.values.resTime, formik.values.guests, formik.values.occasion, formik.values.location]);
+        }
+        formik.handleSubmit(e);
+    }
+
     useEffect(()=> {
         formik.setFieldValue('resTime', bookingTimes[0]);
         // eslint-disable-next-line
     },[bookingTimes]);
 
     return (
-        <form onSubmit={ formik.handleSubmit }>
+        <form onSubmit={ handleSubmit }>
             <h2>Customer Information</h2>
             <div className="form-wrapper" id="customer-info">
                 <div className="form-row">
@@ -133,12 +140,13 @@ const BookingForm = ({ bookingTimes, updateTimes }) => {
                                 id="resDate"
                                 className={ formik.errors.resDate && formik.touched.resDate ? "form-error" : ""}
                                 onChange={ (e) => {
-                                    updateTimes({
-                                        type: 'updated_times'
-                                    });
-                                    formik.handleChange(e);
+                                        updateTimes({
+                                            type: 'updated_times',
+                                            date: e.target.value
+                                        });
+                                        formik.handleChange(e);
                                     }
-                                 }
+                                }
                                 value={ formik.values.resDate }
                             />
                             { formik.errors.resDate && formik.touched.resDate ? (
