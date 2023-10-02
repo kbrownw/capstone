@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import restaurant from "../images/restaurant.jpg";
-import { useState } from "react";
+import { useEffect } from "react";
 
-const BookingForm = ({ bookingTimes, setBookingTimes }) => {
+const BookingForm = ({ bookingTimes, updateTimes }) => {
     const convoBubbles = <>
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                 <path d="M8.27188 29.4152C12.3544 29.4152 15.6639 25.9727 15.6639 21.7261C15.6639 17.4794 12.3544 14.0369 8.27188 14.0369C4.18939 14.0369 0.879883 17.4794 0.879883 21.7261C0.879883 23.1266 1.23985 24.4396 1.8688 25.5706L1.24948 29.0308L4.57588 28.3866C5.66315 29.0408 6.92548 29.4152 8.27188 29.4152Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
@@ -24,7 +24,7 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
             email: "",
             phoneNumber: "",
             resDate: "",
-            resTime: "17:00",
+            resTime: bookingTimes[0],
             guests: 1,
             occasion: "None",
             location: ""
@@ -41,11 +41,17 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
             resTime: Yup
                 .mixed()
                 .oneOf(bookingTimes)
-                .required("Required"),
+                .default(),
             guests: Yup.number().min(1, "Minimum of 1 guest required").max(10, "We have a maximum table size of 10 guests").required("Required"),
             location: Yup.mixed().oneOf(["Inside","Outside"]).required("Please choose a location")
         }),
     })
+
+    useEffect(()=> {
+        formik.setFieldValue('resTime', bookingTimes[0]);
+        // eslint-disable-next-line
+    },[bookingTimes]);
+
     return (
         <form onSubmit={ formik.handleSubmit }>
             <h2>Customer Information</h2>
@@ -105,6 +111,7 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
                             type="text"
                             name="phoneNumber"
                             id="phoneNumber"
+                            placeholder="xxx-xxx-xxxx"
                             className={ formik.errors.phoneNumber && formik.touched.phoneNumber ? "form-error" : ""}
                             onChange={ formik.handleChange }
                             value={ formik.values.phoneNumber }
@@ -119,13 +126,19 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
             <div id="diner-section">
                 <div className="form-wrapper" id="diner-info">
                     <div className="form-row">
-                        <label htmlFor="resDate">Choose date:</label>
+                        <label htmlFor="resDate">Choose Date:</label>
                         <div className="form-column">
                             <input
                                 type="date"
                                 id="resDate"
                                 className={ formik.errors.resDate && formik.touched.resDate ? "form-error" : ""}
-                                onChange={ formik.handleChange }
+                                onChange={ (e) => {
+                                    updateTimes({
+                                        type: 'updated_times'
+                                    });
+                                    formik.handleChange(e);
+                                    }
+                                 }
                                 value={ formik.values.resDate }
                             />
                             { formik.errors.resDate && formik.touched.resDate ? (
@@ -134,16 +147,13 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
                         </div>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="resTime">Choose time:</label>
+                        <label htmlFor="resTime">Choose Time:</label>
                         <div className="form-column chevron">
                             <select
                                 id="resTime"
                                 name="resTime"
                                 className={ formik.errors.resTime && formik.touched.resTime ? "form-error" : ""}
-                                onChange={ (e) => {
-                                    // setBookingTimes(e.target.value);
-                                    formik.handleChange(e);
-                                }}
+                                onChange={ formik.handleChange }
                                 value={ formik.values.resTime }>
                                     { times }
                             </select>
@@ -153,7 +163,7 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
                         </div>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="guests">Number of guests:</label>
+                        <label htmlFor="guests">Number of Guests:</label>
                         <div className="form-column">
                             <div className="form-row" id="guests-row">
                                 <button
@@ -243,7 +253,7 @@ const BookingForm = ({ bookingTimes, setBookingTimes }) => {
                                 <div className="form-error-text">{ formik.errors.location }</div>
                             ) : <div className="form-error-text">&nbsp;</div> }
                     </div>
-                    <button className="btn-default" type="submit">Reserve Me!</button>
+                    <button data-testid="main-submit" className="btn-default" type="submit">Reserve Me!</button>
                 </div>
                 <img src={ restaurant } alt="Restaurant" />
             </div>
