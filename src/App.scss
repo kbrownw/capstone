@@ -5,11 +5,11 @@ body {
   text-align: center;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: "Markazi Text";
 }
 
-h3, h4, h5 {
+h4, h5 {
   font-family: "Karla";
 }
 
@@ -23,6 +23,12 @@ h2 {
   font-size: 40px;
   color: #FFF;
   font-weight: normal;
+}
+
+h3 {
+  font-size: 40px;
+  color: #495E57;
+  font-weight: 400;
 }
 
 h4 {
@@ -803,6 +809,71 @@ input, select {
     display: none;
   }
 }
+
+// Confirmation Page
+
+// Confirmation Header
+
+#confirmation-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#confirmation-header > * {
+  box-sizing: border-box;
+}
+
+#confirmation-body {
+  max-width: 875px;
+  margin: 50px auto;
+}
+
+#confirmation-body h3 {
+  margin-bottom: 1em;
+}
+
+#confirmation-body h4 {
+  color: #495E57;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: center;
+}
+
+.grid-row:nth-child(1) {
+  border-bottom: 1px solid #b9bdbc;
+}
+
+#confirmation-body button {
+  width: 50%;
+}
+
+@media screen and (max-width: 875px) {
+  #confirmation-body {
+    max-width: 95%;
+  }
+  .grid-row {
+    margin-top: 30px;
+    grid-auto-flow: row;
+  }
+  #confirmation-body button {
+    width: 100%;
+  }
+
+  #confirmation-body  .flex-col > a {
+    margin-top: 50px;
+  }
+}
+
 /* Footer */
 
 footer {

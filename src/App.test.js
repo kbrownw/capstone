@@ -1,7 +1,8 @@
-import { act, userEvent, render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { initializeTimes, updateTimes } from './components/BookingPage';
 import BookingHeader from './components/BookingHeader';
 import BookingPage from './components/BookingPage';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('BookingHeader', () => {
   test('Renders the BookingForm heading', () => {
@@ -19,7 +20,7 @@ describe('BookingForm', () => {
     const phone = "777-777-1234";
     const selectedDate = "2023-10-21";
     const handleSubmit = jest.fn();
-    render(<BookingPage onSubmit={handleSubmit}/>);
+    render(<BrowserRouter><BookingPage onSubmit={handleSubmit}/></BrowserRouter>);
     
     const firstNameInput = screen.getByLabelText(/First Name:/);
     const lastNameInput = screen.getByLabelText(/Last Name:/);
@@ -49,7 +50,7 @@ describe('BookingPage', () => {
   })
 
   test('Should find date selector in BookingForm', () => {
-    render(<BookingPage />);
+    render(<BrowserRouter><BookingPage /></BrowserRouter>);
     const dateSelection = screen.getByLabelText(/Choose Date:/);
     expect(dateSelection).toBeInTheDocument();
   })

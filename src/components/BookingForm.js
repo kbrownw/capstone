@@ -2,8 +2,12 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import restaurant from "../images/restaurant.jpg";
 import { useEffect } from "react";
+import { useSubmitForm } from "../hooks/submitForm";
+
 
 const BookingForm = ({ bookingTimes, updateTimes, onSubmit }) => {
+    const {isLoading, submitToAPI} = useSubmitForm();
+
     const convoBubbles = <>
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                 <path d="M8.27188 29.4152C12.3544 29.4152 15.6639 25.9727 15.6639 21.7261C15.6639 17.4794 12.3544 14.0369 8.27188 14.0369C4.18939 14.0369 0.879883 17.4794 0.879883 21.7261C0.879883 23.1266 1.23985 24.4396 1.8688 25.5706L1.24948 29.0308L4.57588 28.3866C5.66315 29.0408 6.92548 29.4152 8.27188 29.4152Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
@@ -31,6 +35,7 @@ const BookingForm = ({ bookingTimes, updateTimes, onSubmit }) => {
         },
         onSubmit: (values) => {
             console.log(values);
+            submitToAPI(values);
         },
         validationSchema: Yup.object({
             firstName: Yup.string().min(1, "Please enter your first name.").required("Required"),
@@ -49,7 +54,17 @@ const BookingForm = ({ bookingTimes, updateTimes, onSubmit }) => {
 
     const handleSubmit = (e) => {
         if (onSubmit) {
-            onSubmit([formik.values.firstName, formik.values.lastName, formik.values.email, formik.values.phoneNumber, formik.values.resDate, formik.values.resTime, formik.values.guests, formik.values.occasion, formik.values.location]);
+            onSubmit([
+                formik.values.firstName,
+                formik.values.lastName,
+                formik.values.email,
+                formik.values.phoneNumber,
+                formik.values.resDate,
+                formik.values.resTime,
+                formik.values.guests,
+                formik.values.occasion,
+                formik.values.location
+            ]);
         }
         formik.handleSubmit(e);
     }
@@ -261,7 +276,9 @@ const BookingForm = ({ bookingTimes, updateTimes, onSubmit }) => {
                                 <div className="form-error-text">{ formik.errors.location }</div>
                             ) : <div className="form-error-text">&nbsp;</div> }
                     </div>
-                    <button data-testid="main-submit" className="btn-default" type="submit">Reserve Me!</button>
+                    <button data-testid="main-submit" className="btn-default" type="submit">
+                        { isLoading ? "Loading..." : "Reserve Me!" }
+                    </button>
                 </div>
                 <img src={ restaurant } alt="Restaurant" />
             </div>
